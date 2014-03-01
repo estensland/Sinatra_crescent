@@ -26,6 +26,8 @@ namespace :generate do
     File.open(model_path, 'w+') do |f|
       f.write(<<-EOF.strip_heredoc)
         class #{model_name} < ActiveRecord::Base
+          # has_many
+          # belongs_to
           # Remember to create a migration!
         end
       EOF
@@ -45,12 +47,18 @@ namespace :generate do
     if File.exist?(path)
       raise "ERROR: File '#{path}' already exists"
     end
+    puts name
+    table_name = name.underscore.match("create_").post_match
 
     puts "Creating #{path}"
     File.open(path, 'w+') do |f|
       f.write(<<-EOF.strip_heredoc)
         class #{name} < ActiveRecord::Migration
           def change
+            create_table :#{table_name} do |t|
+
+              t.timestamps
+            end
           end
         end
       EOF
@@ -64,7 +72,7 @@ namespace :generate do
     end
 
     name     = ENV['NAME'].downcase
-    filename = ENV['NAME'].underscore + '.rb'
+    filename = ENV['NAME'].pluralize.underscore + '.rb'
     path     = APP_ROOT.join('app', 'controllers', filename)
 
     if File.exist?(path)
@@ -74,6 +82,27 @@ namespace :generate do
     puts "Creating #{path}"
     File.open(path, 'w+') do |f|
       f.write(<<-EOF.strip_heredoc)
+
+        get '/#{name}/new/:id' do
+          
+          erb :"#{name}_views/new"
+        end
+
+        get '/#{name}/show/:id' do
+          
+          erb :"#{name}_views/show"
+        end
+
+        get '/#{name}/edit/:id' do
+          
+          erb :"#{name}_views/edit"
+        end 
+
+        get '/#{name}/delete/:id' do
+          
+          erb :"#{name}_views/delete"
+        end
+
         post '/#{name}/new' do
           new_object = #{name.camelize}.new(params[#{name}])
           if new_object.save
@@ -83,51 +112,22 @@ namespace :generate do
             erb :"#{name}_views/new"
           end
         end
-        
-        get '/#{name}/edit' do
+
+        post '/#{name}/edit' do
           edit_object = #{name.camelize}.find(params[:#{name}_id])
           edit_object.update_attributes(params)
           redirect to('/')
         end
 
-        get '/#{name}/delete' do
+        post '/#{name}/delete' do
           #{name} = #{name.camelize}.find( )
           #{name}.destroy
           redirect to('/')
         end
+
       EOF
      end
   end
-
-
-
-  desc "Creating MVC....and migration...ignore migration at own risk"
-  task :scaffold do
-    unless ENV.has_key?('NAME')
-      raise "Must specificy model name, e.g., rake generate:scaffold NAME=user"
-    end
-
-    puts "Scaffold activated"
-
-    name     = ENV['NAME'].downcase
-    migration_name = "create_#{ENV['NAME'].downcase.pluralize}"
-
-    puts "Making all the stuff for the #{name} table...sit and relax"
-
-    exec(<<-EOF.strip_heredoc
-        mkdir app/views/#{name}_views
-        touch app/views/#{name}_views/edit.erb
-        touch app/views/#{name}_views/new.erb
-        touch app/views/#{name}_views/show.erb
-        bundle exec rake generate:model NAME=#{name}
-        bundle exec rake generate:controller NAME=#{name.downcase.pluralize}
-        bundle exec rake generate:migration NAME=#{migration_name}
-      EOF
-      )
-
-  end
-
-
 
 
   desc "Create an empty model spec in spec, e.g., rake generate:spec NAME=user"
@@ -156,33 +156,67 @@ namespace :generate do
     end
   end
 
+
+  desc "Creating MVC....and migration...ignore migration at own risk"
+  task :scaffold do
+    unless ENV.has_key?('NAME')
+      raise "Must specificy model name, e.g., rake generate:scaffold NAME=user"
+    end
+
+    puts "Scaffold activated"
+
+    name     = ENV['NAME'].downcase
+    migration_name = "create_#{ENV['NAME'].downcase.pluralize}"
+
+    puts "Making all the stuff for the #{name} table...sit and relax"
+
+    exec(<<-EOF.strip_heredoc
+        mkdir app/views/#{name}_views
+        touch app/views/#{name}_views/edit.erb
+        touch app/views/#{name}_views/new.erb
+        touch app/views/#{name.singularize}_views/show.erb
+        bundle exec rake generate:model NAME=#{name}
+        bundle exec rake generate:controller NAME=#{name.downcase}
+        bundle exec rake generate:migration NAME=#{migration_name}
+      EOF
+      )
+
+  end
+
+  desc "Deleting all aspects of a table and MVC"
+  task :delete do
+    unless ENV.has_key?('NAME')
+      raise "Must specificy a MVC to delete, e.g., rake generate:scaffold NAME=user"
+    end
+
+    puts "Wildfire Deletion Activated"
+
+    name     = ENV['NAME'].downcase
+    migration_name = "create_#{ENV['NAME'].downcase.pluralize}"
+
+    puts "Deleting all the stuff related to the #{name} table...watch it burn"
+
+    files = Dir.entries( 'db/migrate' )
+    delete = []
+
+    files.each { |file| delete << file if file.match(name.downcase.pluralize)}
+
+    exec(<<-EOF.strip_heredoc
+        rm app/views/#{name}_views/edit.erb
+        rm app/views/#{name}_views/new.erb
+        rm app/views/#{name}_views/show.erb
+        rmdir app/views/#{name}_views
+        rm db/migrate/#{delete[0]}
+        rm app/models/#{name.downcase}.rb
+        rm app/controllers/#{name.downcase.pluralize}.rb
+      EOF
+      )
+
+  end
 end
 
 namespace :db do
 
-  desc "reset the database"
-  task :reset do
-    puts "resetting the frakking db"
-    exec("bundle exec rake db:drop && bundle exec rake db:set")
-  end
-
-  desc "set the database"
-  task :set do
-    puts "Create-Migrate-Seed...ALL AT ONCE"
-    exec("bundle exec rake db:create && bundle exec rake db:migrate && bundle exec rake db:seed")
-  end
-
-  desc "create/migrate/seed db and open the console"
-  task :conset do
-    puts "Bundle, Setting db, and entering console"
-    exec("bundle update && bundle exec rake db:drop && bundle exec rake console")
-  end
-
-  desc "reset the db and opening the console"
-  task :conreset do
-    puts "Reset to Console..."
-    exec("bundle exec rake db:reset && bundle exec rake console")
-  end
 
   desc "Create the database at #{DB_NAME}"
   task :create do
@@ -214,13 +248,43 @@ namespace :db do
   task :version do
     puts "Current version: #{ActiveRecord::Migrator.current_version}"
   end
+
+
+  # CUSTOM TASKS...
+
+  desc "reset the database"
+  task :reset do
+    puts "resetting the frakking db"
+    exec("bundle exec rake db:drop && bundle exec rake db:set")
+  end
+
+  desc "set the database"
+  task :set do
+    puts "Create-Migrate-Seed...ALL AT ONCE"
+    exec("bundle exec rake db:create && bundle exec rake db:migrate && bundle exec rake db:seed")
+  end
+
+  desc "create/migrate/seed db and open the console"
+  task :conset do
+    puts "Bundle, Setting db, and entering console"
+    exec("bundle update && bundle exec rake db:drop && bundle exec rake console")
+  end
+
+  desc "reset the db and opening the console"
+  task :conreset do
+    puts "Reset to Console..."
+    exec("bundle exec rake db:reset && bundle exec rake console")
+  end
+
 end
 
 desc 'Start User-InterRake'
 task "launch" do
-  puts "Table generator...Type 'q' to quit"
+  puts "Starting User-InterRake"
   
   loop do
+    puts "==== User-InterRake ===="
+    puts "Type in a string of commands in order:"
     puts "'q' -> quit"
     puts "'b' -> bundle update"
     puts "'s' -> scaffold"
@@ -232,61 +296,74 @@ task "launch" do
     puts "'g' -> git add and commit"
     input = STDIN.gets.chomp
     
-    case input
-    when "q" then break
-    when "b"
-      puts "bundling"
-      exec("bundle update")
-    when "s"
-      puts "NAME= ?"
-      scaffold_input = STDIN.gets.chomp
-      exec(<<-EOF
-        bundle exec rake generate:scaffold NAME=#{scaffold_input}
-        bundle exec rake launch 
-        EOF
-        )
-    when "i"
-      puts "Bundle through seeding"
-      exec(<<-EOF
-        bundle update
-        bundle exec db:set
-        bundle exec rake launch 
-        EOF
-        )
-    when "h"
-      puts "init to console"
-      exec(<<-EOF
-        bundle update
-        bundle exec db:set
-        bundle exec rake console 
-        EOF
-        )
-    when "r"
-      exec(<<-EOF
-        bundle update
-        bundle exec db:reset
-        bundle exec rake launch 
-        EOF
-        )
-    when "x"
-      (<<-EOF
-        bundle update
-        bundle exec db:reset
-        bundle exec rake console
-        EOF
-        )
-    when "c"
-      puts "It's console time"
-      exec("rake console")
-    when "g"
-      puts "Type your commit message"
-      message = STDIN.gets.chomp
-      exec(<<-EOF
-        git add .
-        git commit -m "#{message}"
-        EOF
-        )    
+    commands = ""
+    console = false
+
+    input.split('').each do |letter|
+      case letter
+      when "q" then break
+      when "b"
+        puts "bundling"
+        commands << (<<-EOF
+          bundle
+          EOF
+          )      
+      when "i"
+        puts "Bundle through seeding"
+        commands << (<<-EOF
+          bundle exec rake db:set
+          EOF
+          )
+      when "s"
+        puts "NAME= ?"
+        scaffold_input = STDIN.gets.chomp
+        commands << (<<-EOF
+          bundle exec rake generate:scaffold NAME=#{scaffold_input}
+          EOF
+          )
+      when "r"
+        commands << (<<-EOF
+          bundle exec rake db:reset
+          EOF
+          )
+      when "d"
+        puts "WARNING DELETING! BE CAREFUL THERE IS NO GOING BACK!"
+        puts "======================================================"
+        puts "NAME= ?"
+        puts "======================================================"
+        puts "SERIOUSLY THOUGH!!! DELETING! TYPE IN NAME=?"
+        puts "======================================================"
+        delete_input = STDIN.gets.chomp
+        commands << (<<-EOF
+          bundle exec rake generate:delete NAME=#{delete_input}
+          EOF
+          )
+      when "c"
+        puts "It's console time"
+        console = true
+        commands << (<<-EOF
+          bundle exec rake console
+          EOF
+          ) 
+      when "g"
+        puts "Type your commit message"
+        message = STDIN.gets.chomp
+        commands << (<<-EOF
+          git add .
+          git commit -m "#{message}"
+          EOF
+          )    
+      end
     end
+    
+    unless console
+      commands << (<<-EOF
+          bundle exec rake launch
+          EOF
+          )
+    end
+
+    exec(commands)
   end
 end
 
