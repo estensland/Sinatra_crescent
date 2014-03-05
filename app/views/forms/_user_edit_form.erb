@@ -1,16 +1,12 @@
-<div class="row">
-	<div class="large-6 large-offset-3 column">
-		<form class="form" action="/user/edit" method="POST">
-			<input type="text" placeholder="email" name="email" value="<%= current_user.email %>">
-      <input type="password" placeholder="Current Password" name="current_password">
-			<input type="password" placeholder="New Password" name="password">
-			<input type="password" placeholder="New Password Confirmation" name="password_confirmation">
-			<input type="submit" value="Save Changes" class="button">
-		</form>
-	</div>
+<div class="view_pane">
+	<form class="form" action="/user/edit" method="POST">
+		<p><input type="text" placeholder="email" name="email" value="<%= current_user.email %>"></p>
+    <p><input type="password" placeholder="Current Password" name="current_password"></p>
+		<p><input type="password" placeholder="New Password" name="password"></p>
+		<p><input type="password" placeholder="New Password Confirmation" name="password_confirmation"></p>
+		<p><input type="submit" value="Save Changes" class="button"></p>
+	</form>
 </div>
-<div class="row">
-	<div class="large-6 large-offset-3 column">
-		<a href="/user/delete" class="button alert">Delete My Account</a>
-	</div>
+<div class="bottom_rung_button">
+	<a href="/user/delete" class="delete_button"><button>Delete My Account</button></a>
 </div>
