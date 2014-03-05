@@ -50,30 +50,6 @@ namespace :generate do
     end
     table_name = name.underscore.match("create_").post_match
 
-        # puts "\t\e[7m\e[32m>>\033[0m Association Creation?"
-    # assoc = []
-
-    # loop do
-    #   puts "\t\e[7m\e[32m>>\033[0m Input 'row' of migration data... eg. 'has_many :users' 'q' to quit"
-    #   print "\t\e[7m\e[5m\e[32m>>\033[0m "
-    #   relation = STDIN.gets.chomp
-    #   break if relation == "q"
-    #   assoc << relation
-    # end
-
-    # puts "\t\e[7m\e[32m>>\033[0m Column Creation?"
-    # column = <<-EOF.strip_heredoc
-
-    # EOF
-
-    # loop do
-    #   puts "\t\e[7m\e[32m>>\033[0m Input 'row' of migration data... eg. 't.string :name' 'q' to quit"
-    #   print "\t\e[7m\e[5m\e[32m>>\033[0m "
-    #   attrib = STDIN.gets.chomp
-    #   break if attrib == "q"
-    #   column << attrib
-    # end
-
     puts "\t\e[7m\e[32m>>\033[0m Creating #{path}"
     File.open(path, 'w+') do |f|
       f.write(<<-EOF.strip_heredoc)
@@ -331,7 +307,7 @@ task "launch" do
     puts "\t'i' \e[41m\e[7m\e[34m->\033[0m initialize db (bundle update/create/migrate/seed) "
     puts "\t'r' \e[43m\e[7m\e[31m->\033[0m reset db (drop/create/migrate/seed" 
     puts "\t'c' \e[45m\e[7m\e[37m->\033[0m exit to console"
-    puts "\t'a' \e[47m\e[7m\e[36m->\033[0m git add and commit"
+    puts "\t'g' \e[47m\e[7m\e[36m->\033[0m git add and commit"
     puts "\t'o' \e[47m\e[7m\e[36m->\033[0m git checkout"
     puts "\t'y' \e[47m\e[7m\e[36m->\033[0m git git checkout -b"
     puts "\t'p' \e[47m\e[7m\e[36m->\033[0m git push origin"
@@ -370,7 +346,7 @@ task "launch" do
         git_add_commit_command
       when "o"
         git_checkout_command
-      when "ø"
+      when "y"
         git_checkout_new_branch_command
       when "p"
         git_push_command
@@ -506,7 +482,7 @@ end
 
 def git_add_commit_command
   puts "\t\e[47m\e[7m\e[36m>>\033[0m Type your commit message"
-  print "\t\e[47m\e[5m\e[7m\e[36m>> \033[0m"
+  print "\t\e[47m\e[5m\e[7m\e[36m>>\033[0m "
 
   message = STDIN.gets.chomp
   back_check(message)
