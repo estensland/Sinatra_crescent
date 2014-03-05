@@ -12,8 +12,11 @@
   <%= erb :_navbar %> 
   <div class="under_nav">
     <%= erb :_errors %>
-    <%= yield %>
-
+    <div class="view_pane">
+      <div class="page_container">
+        <%= yield %>
+      </div> 
+    </div> 
     <%= erb :_js %>
   </div>
 </body>
