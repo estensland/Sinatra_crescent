@@ -4,7 +4,7 @@
     <a class="home_link" href="/"> Home </a> | 
     <a href="/"> link </a> |
   <% if current_user? %>  
-    <span> <%= current_user.email %> &nbsp | <a href="../../../user/signout"> Signout </a> </span> 
+    <span> <a href="../../../user/edit/<%= current_user.id %>"><%= current_user.email %> &nbsp</a> | <a href="../../../user/signout"> Signout </a> </span> 
   <% else %>
     <a href="user/signin">Sign In</a>
   <% end %>

@@ -1,5 +1,8 @@
-<h1>Home</h1>
+<h1 class="page_head">Home</h1>
+<p>This is where the magic happens</p>
 
 <% if !current_user? %>
-  <a href="/user/signup" class="button">Sign Up!</a>
+  <div class="bottom_rung_button">
+    <a href="/user/signup" class="sign_up_button"><button>Sign Up!</button></a>
+  </div>
 <% end %>
