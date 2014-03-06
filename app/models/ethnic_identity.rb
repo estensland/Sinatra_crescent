@@ -1,5 +1,5 @@
 class EthnicIdentity < ActiveRecord::Base
-  # has_many
-  # belongs_to
+  belongs_to :classical_muslim
+  belongs_to :ethnicity
   # Remember to create a migration!
 end
