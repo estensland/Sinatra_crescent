@@ -20,7 +20,7 @@ class ClassicalMuslim < ActiveRecord::Base
   end
 
   def siblings
-    return false unless self.object_relationships.first.subject.subject_relationships.first
+    return false if self.object_relationships.first == nil
     self.object_relationships.first.subject.subject_relationships.map do |sib|
       sib
     end
@@ -28,6 +28,7 @@ class ClassicalMuslim < ActiveRecord::Base
 
   def uncles
     return false unless self.object_relationships.first
+    return false unless self.object_relationships.first.subject.siblings
     self.object_relationships.first.subject.siblings.map do |x|
       x
     end
