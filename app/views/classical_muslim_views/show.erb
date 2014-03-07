@@ -54,13 +54,25 @@
 
 <div class="relational">
 
-  <p><span>Titles:</span></p>
-  <% if @person.subject_relations %>
-    <% @person.positions.each do |position| %>
-      <p><%= position.title.position %> of <%= position.scope.area %>: From <%= position.start_date %> til <%= position.end_date %></p>
+  <p><span>Relationships:</span></p>
+  <% if @person.subject_relationships %>
+    <% @person.subject_relationships.each do |rel| %>
+      <p><%= rel.relation.name %> of: <a href="../../classical_muslim/show/<%= rel.object.id %>"><%= rel.object.ism %></a></p>
     <% end %>  
   <% end %>
+    
+  <% if @person.object_relationships %>
+    <% @person.object_relationships.each do |rel| %>
+      <p>Son of: <a href="../../classical_muslim/show/<%= rel.subject.id %>"><%= rel.subject.ism %></a></p>
+    <% end %>
+  <% end %>
 
+  <% if @person.siblings %>
+    <% @person.siblings.each do |rel| %>
+      <p>Brother of: <a href="../../classical_muslim/show/<%= rel.object.id %>"><%= rel.object.ism %></a></p>
+    <% end %>
+  <% end %>
+  
 </div>
 
 <div class="positions">
@@ -68,7 +80,7 @@
   <p><span>Titles:</span></p>
   <% if @person.positions %>
     <% @person.positions.each do |position| %>
-      <p><%= position.title.position %> of <%= position.scope.area %>: From <%= position.start_date %> til <%= position.end_date %></p>
+      <p><span><%= position.title.position %> of <%= position.scope.area %></span>: From <%= position.start_date %> til <%= position.end_date %></p>
     <% end %>  
   <% end %>
 

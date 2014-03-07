@@ -167,6 +167,9 @@ ClassicalMuslim.create(user_id: 1, ism: "Hisham", laqab: nil, nisbah: nil, nasab
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 9, ethnicity_id: 30) # BANU UMAYYA
     Position.create(user_id: 1, title_id: 1, classical_muslim_id: 9, scope_id: 1, start_date: "723", end_date: "743") #UMAYYAD CALIPH
     Relationship.create(user_id: 1, subject_id: 9, object_id: 13, relation_id: 1)
+    Relationship.create(user_id: 1, subject_id: 9, object_id: 7, relation_id: 1)
+    Relationship.create(user_id: 1, subject_id: 9, object_id: 12, relation_id: 1)
+
     LifeEvent.create(user_id: 1, classical_muslim_id: 9, event_id: 1, date: "691")
     LifeEvent.create(user_id: 1, classical_muslim_id: 9, event_id: 2, date: "Feburary 8, 743")
     Adherent.create(user_id: 1, classical_muslim_id: 9, faction_id: 1) 

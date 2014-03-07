@@ -19,5 +19,12 @@ class ClassicalMuslim < ActiveRecord::Base
     Description.where(table: "classical_muslims").where(parent_id: "#{self.id}")
   end
 
+  def siblings
+    return false unless self.object_relationships.first
+    self.object_relationships.first.subject.subject_relationships.map do |sib|
+      sib
+    end
+  end
+
   # Remember to create a migration!
 end
