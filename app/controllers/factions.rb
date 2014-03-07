@@ -1,7 +1,7 @@
 
-get '/faction/new/:id' do
+get '/faction/all' do
   
-  erb :"faction_views/new"
+  erb :"faction_views/all"
 end
 
 get '/faction/show/:id' do

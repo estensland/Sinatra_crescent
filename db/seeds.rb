@@ -11,8 +11,10 @@ User.create(user_name: "Stens", email: "stens688@gmail.com", password: "1234", p
 Title.create(user_id: 1, position: "Caliph") #1
 Title.create(user_id: 1, position: "Govenor")
 Title.create(user_id: 1, position: "Chief") #3
-Title.create(user_id: 1, position: "Commander")
+Title.create(user_id: 1, position: "An Officer in")
 Title.create(user_id: 1, position: "General") #5
+Title.create(user_id: 1, position: "Treasurer") 
+
 
 Scope.create(user_id: 1, area: "The Umayyad Caliphate") #1
 Scope.create(user_id: 1, area: "The Abbasid Caliphate")
@@ -24,6 +26,21 @@ Scope.create(user_id: 1, area: "Fars")
 Scope.create(user_id: 1, area: "Homs")
 Scope.create(user_id: 1, area: "Damascus")
 Scope.create(user_id: 1, area: "Merv") #10
+Scope.create(user_id: 1, area: "A Town in Afghanistan")
+Scope.create(user_id: 1, area: "The Yamani Syrian Army") #12
+Scope.create(user_id: 1, area: "Part of The Syrian Yamani Army")
+Scope.create(user_id: 1, area: "The Mudari Jaziran Army")
+Scope.create(user_id: 1, area: "Part of The Mudari Jaziran Army") #15
+Scope.create(user_id: 1, area: "The Yamani Khurusani Army")
+Scope.create(user_id: 1, area: "Part of The Yamani Khurusani Army")
+Scope.create(user_id: 1, area: "The Mudari Khurusani Army") #18
+Scope.create(user_id: 1, area: "Part of The Mudari Khurusani Army")
+Scope.create(user_id: 1, area: "al-Harith's Army") #20
+Scope.create(user_id: 1, area: "The Abbasid Army")
+Scope.create(user_id: 1, area: "The Rebel Khurusani Army") #22
+
+
+
 
 Relation.create(user_id: 1, name: "Father")
 Relation.create(user_id: 1, name: "Mother")
@@ -243,7 +260,53 @@ ClassicalMuslim.create(user_id: 1, ism: "al-Walid", laqab: nil, nisbah: nil, nas
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 16, ethnicity_id: 20) # BANU MUDAR 
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 16, ethnicity_id: 27) # BANU QURAYSH 
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 16, ethnicity_id: 30) # BANU UMAYYA
-    Position.create(user_id: 1, title_id: 1, classical_muslim_id: 15, scope_id: 1, start_date: "745", end_date: "750") #UMAYYAD CALIPH
+    Position.create(user_id: 1, title_id: 1, classical_muslim_id: 16, scope_id: 1, start_date: "745", end_date: "750") #UMAYYAD CALIPH
     Adherent.create(user_id: 1, classical_muslim_id: 16, faction_id: 1) 
 
+# 17
+ClassicalMuslim.create(user_id: 1, ism: "‘Abdallah", laqab: nil, nisbah: nil, nasab: "ibn ‘Ali ibn Muhammad",  kunya: nil)
+  Description.create(table: "classical_muslims", user_id: 1, parent_id: 17, content: "He joined ‘Abdallah b. Mu’awiya with his nephew al-Mansur and his brother ‘Isa. He would go on to lead the Abbasid host at the Battle of the Zab and contested al-Mansur’s succession when al-Saffah died. He was defeated by Abu Muslim, who al-Mansur then killed.")
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 17, ethnicity_id: 1) # Arab
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 17, ethnicity_id: 20) # BANU MUDAR 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 17, ethnicity_id: 27) # BANU QURAYSH 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 17, ethnicity_id: 28) # BANU HASHIM
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 17, ethnicity_id: 31) # BANU ABBAS
+    Position.create(user_id: 1, title_id: 5, classical_muslim_id: 17, scope_id: 21, start_date: "750", end_date: "751") # GENERAL OF ABBASID ARMY
+    Position.create(user_id: 1, title_id: 2, classical_muslim_id: 17, scope_id: 5, start_date: "751", end_date: "754") # GOV OF SYRIA
+    Position.create(user_id: 1, title_id: 1, classical_muslim_id: 17, scope_id: 3, start_date: "754", end_date: "754") # DISPUTED CALIPH
+
+ClassicalMuslim.create(user_id: 1, ism: "‘Abdallah", laqab: "Al-Mansur", nisbah: nil, nasab: "ibn Muhammad ibn ‘Abdallah",  kunya: "Abu Ja'far")
+  Description.create(table: "classical_muslims", user_id: 1, parent_id: 18, content: "The second Abbasid caliph ruled from 754-775 and founded Baghdad. Despite being older than al-Saffah, he was passed over originally, possibly because his mother was a slave. He was involved with the surrender/murder of Ibn Hubayrah at Wasit during his brother’s reign, and politically clashed with Abu Muslim. Once in power and after his uncle was out of the way, he had Abu Muslim killed.")
+    
+    Position.create(user_id: 1, title_id: 1, classical_muslim_id: 18, scope_id: 11, start_date: "746ish", end_date: "") # 
+    Position.create(user_id: 1, title_id: 1, classical_muslim_id: 18, scope_id: 2, start_date: "754", end_date: "775") # ABBASID CALIPH
+
+ClassicalMuslim.create(user_id: 1, ism: "‘Ali", laqab: nil, nisbah: nil, nasab: "ibn ‘Abdallah ibn al-Abbas",  kunya: "")
+
+ClassicalMuslim.create(user_id: 1, ism: "Muhammad", laqab: nil, nisbah: nil, nasab: "ibn ‘Ali ibn ‘Abdallah",  kunya: "")
+
+
+ClassicalMuslim.create(user_id: 1, ism: "‘Abdallah", laqab: "Al-Saffah", nisbah: nil, nasab: "ibn Muhammad b. ‘Ali",  kunya: "Abu 'Abbas")
+  Description.create(table: "classical_muslims", user_id: 1, parent_id: 21, content: "The first Abbasid Caliph reigned during 750-754 . His authority was limited severely by Abu Muslim’s power, and witnessed the Khurasani move against the Hashimiyya by killing off Ibn Kathir and Abu Salama. Only with al-Saffah’s death did the Abbasids overcome Abu Muslim’s power.")
+    
+    Position.create(user_id: 1, title_id: 1, classical_muslim_id: 21, scope_id: 2, start_date: "750", end_date: "754") # ABBASID CALIPH
+  
+ClassicalMuslim.create(user_id: 1, ism: "Dawud", laqab: nil, nisbah: nil, nasab: "ibn ‘Ali ibn ‘Abdallah",  kunya: nil)
+  Description.create(table: "classical_muslims", user_id: 1, parent_id: 22, content: "Uncle of the Caliph brothers, he executed captured Umayyads in the Hejaz.")
+  Position.create(user_id: 1, title_id: 4, classical_muslim_id: 18, scope_id: 22, start_date: "746ish", end_date: "???") # 
+
+ClassicalMuslim.create(user_id: 1, ism: "Ibrahim", laqab: "Al-Imam", nisbah: nil, nasab: "ibn Muhammad b. ‘Ali",  kunya: "Abu 'Abbas")
+  Description.create(table: "classical_muslims", user_id: 1, parent_id: 23, content: "The Abbasid who it is claimed the revolution was done in favor for. Questions arise in the scholarship of the exact details, but suffice to say he was captured and killed by Marwan’s forces before the Khurasanis took Kufa.")
+ 
+ClassicalMuslim.create(user_id: 1, ism: "‘Isa", laqab: nil, nisbah: nil, nasab: "ibn ‘Ali ibn ‘Abdallah",  kunya: nil)
+  Description.create(table: "classical_muslims", user_id: 1, parent_id: 22, content: "Joined ‘Abdallah b. Mu’awiya’s revolt with his nephew al-Mansur and his brother ‘Abdallah.")
+
+ClassicalMuslim.create(user_id: 1, ism: "‘Isa", laqab: nil, nisbah: nil, nasab: "ibn Musa ibn ‘Ali",  kunya: nil)
+  Description.create(table: "classical_muslims", user_id: 1, parent_id: 22, content: "Nephew of al-Mansur and al-Saffah who featured prominently in the early Abbasid political scene. When al-Saffah died, he accepted the oath of allegiance for al-Mansur as his uncle was away in Mecca. He was second in line for the Caliphate, but al-Mansur later pushed him out in favor of al-Mahdi b. al-Mansur.")
+
+ClassicalMuslim.create(user_id: 1, ism: "Salih", laqab: nil, nisbah: nil, nasab: "ibn ‘Ali ibn ‘Abdallah",  kunya: nil)
+  Description.create(table: "classical_muslims", user_id: 1, parent_id: 22, content: "Nephew of al-Mansur and al-Saffah who featured prominently in the early Abbasid political scene. When al-Saffah died, he accepted the oath of allegiance for al-Mansur as his uncle was away in Mecca. He was second in line for the Caliphate, but al-Mansur later pushed him out in favor of al-Mahdi b. al-Mansur.")
+   
+   
+  Led the pursuit of Marwan II into upper Egypt, where with army, including Abu ‘Awn, caught up with and killed Marwan.
 

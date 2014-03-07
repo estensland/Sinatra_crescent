@@ -1,7 +1,7 @@
 
-get '/ethnicity/new/:id' do
+get '/ethnicity/all' do
   
-  erb :"ethnicity_views/new"
+  erb :"ethnicity_views/all"
 end
 
 get '/ethnicity/show/:id' do
