@@ -311,12 +311,24 @@ ClassicalMuslim.create(user_id: 1, ism: "‘Ali", laqab: nil, nisbah: nil, nasab
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 19, ethnicity_id: 27) # BANU QURAYSH 
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 19, ethnicity_id: 28) # BANU HASHIM
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 19, ethnicity_id: 31) # BANU ABBAS
+    Relationship.create(user_id: 1, subject_id: 19, object_id: 20, relation_id: 1)
+    Relationship.create(user_id: 1, subject_id: 19, object_id: 17, relation_id: 1)
+    Relationship.create(user_id: 1, subject_id: 19, object_id: 22, relation_id: 1)
+    Relationship.create(user_id: 1, subject_id: 19, object_id: 24, relation_id: 1)
+    Relationship.create(user_id: 1, subject_id: 19, object_id: 26, relation_id: 1)
+    Relationship.create(user_id: 1, subject_id: 19, object_id: 27, relation_id: 1)
+
+
 ClassicalMuslim.create(user_id: 1, ism: "Muhammad", laqab: nil, nisbah: nil, nasab: "ibn ‘Ali ibn ‘Abdallah",  kunya: "")
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 20, ethnicity_id: 1) # Arab
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 20, ethnicity_id: 20) # BANU MUDAR 
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 20, ethnicity_id: 27) # BANU QURAYSH 
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 20, ethnicity_id: 28) # BANU HASHIM
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 20, ethnicity_id: 31) # BANU ABBAS
+    Relationship.create(user_id: 1, subject_id: 20, object_id: 21, relation_id: 1)
+    Relationship.create(user_id: 1, subject_id: 20, object_id: 23, relation_id: 1)
+    Relationship.create(user_id: 1, subject_id: 20, object_id: 18, relation_id: 1)
+
 
 ClassicalMuslim.create(user_id: 1, ism: "‘Abdallah", laqab: "Al-Saffah", nisbah: nil, nasab: "ibn Muhammad b. ‘Ali",  kunya: "Abu 'Abbas")
   Description.create(table: "classical_muslims", user_id: 1, parent_id: 21, content: "The first Abbasid Caliph reigned during 750-754 . His authority was limited severely by Abu Muslim’s power, and witnessed the Khurasani move against the Hashimiyya by killing off Ibn Kathir and Abu Salama. Only with al-Saffah’s death did the Abbasids overcome Abu Muslim’s power.")
@@ -368,5 +380,13 @@ ClassicalMuslim.create(user_id: 1, ism: "Salih", laqab: nil, nisbah: nil, nasab:
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 26, ethnicity_id: 28) # BANU HASHIM
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 26, ethnicity_id: 31) # BANU ABBAS
    
+ClassicalMuslim.create(user_id: 1, ism: "Musa", laqab: nil, nisbah: nil, nasab: "ibn ‘Ali ibn Muhammad",  kunya: nil)
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 27, ethnicity_id: 1) # Arab
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 27, ethnicity_id: 20) # BANU MUDAR 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 27, ethnicity_id: 27) # BANU QURAYSH 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 27, ethnicity_id: 28) # BANU HASHIM
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 27, ethnicity_id: 31) # BANU ABBAS
+    Relationship.create(user_id: 1, subject_id: 27, object_id: 25, relation_id: 1)
+
   
 
