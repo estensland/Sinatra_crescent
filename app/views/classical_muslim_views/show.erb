@@ -85,9 +85,9 @@
     <% end %>
   <% end %>
 
-  <% if @person.uncles.first %>
+  <% if @person.nephews %>
     <% @person.nephews.each do |rel| %>
-      <p class="indent">Uncle of: <a href="../../classical_muslim/show/<%= rel.id %>"><%= rel.ism %></a></p>
+      <p class="indent">Uncle of: <a href="../../classical_muslim/show/<%= rel.object.id %>"><%= rel.object.ism %></a></p>
     <% end %>
   <% end %>
   
