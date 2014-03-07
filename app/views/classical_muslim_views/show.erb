@@ -17,6 +17,7 @@
   <% if @person.laqab %>
   <p class="field_bar"><span class="field_name">Laqab:</span> <%= @person.laqab %></p>
   <% end %>
+  <br>
 </div>
 
 <div class="genealogical">
@@ -24,7 +25,7 @@
   <p><span>Genealogical/Ethnic Details:</span></p>
   <% if @person.ethnicities %>
     <% @person.ethnicities.each do |ethnicity| %>
-      <p><%= ethnicity.name %></p>
+      <p class="indent"><%= ethnicity.name %></p>
     <% end %>  
   <% end %>
 
@@ -35,7 +36,7 @@
   <p><span>Life Events:</span></p>
   <% if @person.life_events %>
     <% @person.life_events.each do |event| %>
-      <p><span><%= event.event.name %>:</span> <%= event.date %></p>
+      <p class="indent"><span><%= event.event.name %>:</span> <%= event.date %></p>
     <% end %>  
   <% end %>
 
@@ -59,21 +60,19 @@
   <p><span>Relationships:</span></p>
   <% if @person.subject_relationships %>
     <% @person.subject_relationships.each do |rel| %>
-      <p class="indent"> blah</p>
-
       <p class="indent"><%= rel.relation.name %> of: <a href="../../classical_muslim/show/<%= rel.object.id %>"><%= rel.object.ism %></a></p>
     <% end %>  
   <% end %>
     
   <% if @person.object_relationships %>
     <% @person.object_relationships.each do |rel| %>
-      <p>Son of: <a href="../../classical_muslim/show/<%= rel.subject.id %>"><%= rel.subject.ism %></a></p>
+      <p class="indent">Son of: <a href="../../classical_muslim/show/<%= rel.subject.id %>"><%= rel.subject.ism %></a></p>
     <% end %>
   <% end %>
 
   <% if @person.siblings %>
     <% @person.siblings.each do |rel| %>
-      <p>Brother of: <a href="../../classical_muslim/show/<%= rel.object.id %>"><%= rel.object.ism %></a></p>
+      <p class="indent">Brother of: <a href="../../classical_muslim/show/<%= rel.object.id %>"><%= rel.object.ism %></a></p>
     <% end %>
   <% end %>
   
