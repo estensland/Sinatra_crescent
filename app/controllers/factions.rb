@@ -5,7 +5,7 @@ get '/faction/new/:id' do
 end
 
 get '/faction/show/:id' do
-  
+  @faction = Faction.find(params[:id])
   erb :"faction_views/show"
 end
 

@@ -4,4 +4,8 @@ class Faction < ActiveRecord::Base
   # has_many
   # belongs_to
   # Remember to create a migration!
+  # 
+  def descriptions
+    Description.where(table: "factions").where(parent_id: "#{self.id}")
+  end
 end

@@ -5,7 +5,7 @@ get '/ethnicity/new/:id' do
 end
 
 get '/ethnicity/show/:id' do
-  
+  @ethnic = Ethnicity.find(params[:id])
   erb :"ethnicity_views/show"
 end
 

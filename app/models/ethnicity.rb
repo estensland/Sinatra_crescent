@@ -4,4 +4,7 @@ class Ethnicity < ActiveRecord::Base
 
   # belongs_to
   # Remember to create a migration!
+  def descriptions
+    Description.where(table: "ethnicities").where(parent_id: "#{self.id}")
+  end
 end

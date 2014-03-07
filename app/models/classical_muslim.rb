@@ -26,5 +26,4 @@ class ClassicalMuslim < ActiveRecord::Base
     end
   end
 
-  # Remember to create a migration!
 end
