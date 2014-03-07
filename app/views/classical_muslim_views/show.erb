@@ -33,9 +33,9 @@
 <div class="events">
 
   <p><span>Life Events:</span></p>
-  <% if @person.events %>
-    <% @person.events.each do |event| %>
-      <p><%= event.name %></p>
+  <% if @person.life_events %>
+    <% @person.life_events.each do |event| %>
+      <p><span><%= event.event.name %>:</span> <%= event.date %></p>
     <% end %>  
   <% end %>
 
@@ -55,10 +55,30 @@
 <div class="relational">
 
   <p><span>Titles:</span></p>
+  <% if @person.subject_relations %>
+    <% @person.positions.each do |position| %>
+      <p><%= position.title.position %> of <%= position.scope.area %>: From <%= position.start_date %> til <%= position.end_date %></p>
+    <% end %>  
+  <% end %>
+
+</div>
+
+<div class="positions">
+
+  <p><span>Titles:</span></p>
   <% if @person.positions %>
     <% @person.positions.each do |position| %>
       <p><%= position.title.position %> of <%= position.scope.area %>: From <%= position.start_date %> til <%= position.end_date %></p>
     <% end %>  
+  <% end %>
+
+</div>
+
+<div class="descriptions">
+
+  <p><span>Description:</span></p>
+  <% if @person.descriptions %>
+    <p><%= @person.descriptions.first.content %> </p>
   <% end %>
 
 </div>

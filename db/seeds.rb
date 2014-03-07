@@ -78,6 +78,13 @@ Faction.create(user_id: 1, name: "Iraqi Hashimiyya")
 Faction.create(user_id: 1, name: "Khurasani Hashimiyya")
 Faction.create(user_id: 1, name: "Mainstream Shi'a")
 Faction.create(user_id: 1, name: "Ghu'lat Shi'a")
+Faction.create(user_id: 1, name: "")
+
+
+Event.create(user_id: 1, name: "Birth")
+Event.create(user_id: 1, name: "Death")
+
+
 
 
 
@@ -160,8 +167,9 @@ ClassicalMuslim.create(user_id: 1, ism: "Hisham", laqab: nil, nisbah: nil, nasab
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 9, ethnicity_id: 30) # BANU UMAYYA
     Position.create(user_id: 1, title_id: 1, classical_muslim_id: 9, scope_id: 1, start_date: "723", end_date: "743") #UMAYYAD CALIPH
     Relationship.create(user_id: 1, subject_id: 9, object_id: 13, relation_id: 1)
-
-
+    LifeEvent.create(user_id: 1, classical_muslim_id: 9, event_id: 1, date: "691")
+    LifeEvent.create(user_id: 1, classical_muslim_id: 9, event_id: 2, date: "Feburary 8, 743")
+    Adherent.create(user_id: 1, classical_muslim_id: 9, faction_id: 1) 
 
 ClassicalMuslim.create(user_id: 1, ism: "Marwan", laqab: nil, nisbah: nil, nasab: "ibn Muhammad",  kunya: nil)
   Description.create(table: "classical_muslims", user_id: 1, parent_id: 10, content: "He was the last Umayyad caliph, ruling from 744-750. He was from a lesser branch of Banu Marwan, and did not expect to become caliph. He was a successful general, finding victories in the Caucuses. Despite originally marching to overthrow Yazid III after the latter’s coup, he was bought off when Yazid gave him the Jazira, Mosul, Armenia, and Azerbaijan to govern. However, once Yazid died Marwan took overthrew Ibrahim and became Caliph. He began his reign rather conciliatory, allowing Syrian garrisons to elect their own governors, but after multiple revolts by those who he had shown mercy to, Marwan became more punitive. In the end, he subdued from Syria to Iran, but his armies failed before the revolutionary Khurasanis. He was defeated at the Battle of the Zab, but he escaped, fleeing until he finally was hunted down in Upper Egypt.")

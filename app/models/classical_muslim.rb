@@ -12,10 +12,12 @@ class ClassicalMuslim < ActiveRecord::Base
   has_many :life_events
   has_many :events, through: :life_events
 
-  has_many :subject_relationships, class_name: "relationships"
-  has_many :object_relationships, class_name: "relationships"
+  has_many :subject_relationships, class_name: "Relationship", foreign_key: "subject_id"
+  has_many :object_relationships, class_name: "Relationship", foreign_key: "object_id"
   
-
+  def descriptions
+    Description.where(table: "classical_muslims").where(parent_id: "#{self.id}")
+  end
 
   # Remember to create a migration!
 end

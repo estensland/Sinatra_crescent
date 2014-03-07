@@ -4,6 +4,7 @@ class CreateLifeEvents < ActiveRecord::Migration
       t.integer :user_id      
       t.integer :event_id
       t.integer :classical_muslim_id
+      t.string :date
       t.timestamps
     end
   end
