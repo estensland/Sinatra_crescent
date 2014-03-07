@@ -20,7 +20,7 @@ class ClassicalMuslim < ActiveRecord::Base
   end
 
   def siblings
-    return false unless self.object_relationships.first
+    return false unless self.object_relationships.first.subject.subject_relationships.first
     self.object_relationships.first.subject.subject_relationships.map do |sib|
       sib
     end
@@ -28,12 +28,12 @@ class ClassicalMuslim < ActiveRecord::Base
 
   def uncles
     return false unless self.object_relationships.first
-    self.object_relationships.first.subject.subject_relationships.map do |sib|
-      sib
+    self.object_relationships.first.subject.siblings.map do |x|
+      x
     end
   end
 
-  
+
   def nephews
     self.siblings.map do |bro|
       bro.object.subject_relationships.map do |son|
@@ -41,5 +41,6 @@ class ClassicalMuslim < ActiveRecord::Base
       end
     end
   end
+
 
 end

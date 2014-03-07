@@ -282,7 +282,7 @@ ClassicalMuslim.create(user_id: 1, ism: "al-Walid", laqab: nil, nisbah: nil, nas
 
 # ABBASIDS
 # 17
-ClassicalMuslim.create(user_id: 1, ism: "‘Abdallah", laqab: nil, nisbah: nil, nasab: "ibn ‘Ali ibn Muhammad",  kunya: nil)
+ClassicalMuslim.create(user_id: 1, ism: "‘Abdallah", laqab: nil, nisbah: nil, nasab: "ibn ‘Ali ibn ‘Abdallah",  kunya: nil)
   Description.create(table: "classical_muslims", user_id: 1, parent_id: 17, content: "He joined ‘Abdallah b. Mu’awiya with his nephew al-Mansur and his brother ‘Isa. He would go on to lead the Abbasid host at the Battle of the Zab and contested al-Mansur’s succession when al-Saffah died. He was defeated by Abu Muslim, who al-Mansur then killed.")
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 17, ethnicity_id: 1) # Arab
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 17, ethnicity_id: 20) # BANU MUDAR 
@@ -328,6 +328,7 @@ ClassicalMuslim.create(user_id: 1, ism: "Muhammad", laqab: nil, nisbah: nil, nas
     Relationship.create(user_id: 1, subject_id: 20, object_id: 21, relation_id: 1)
     Relationship.create(user_id: 1, subject_id: 20, object_id: 23, relation_id: 1)
     Relationship.create(user_id: 1, subject_id: 20, object_id: 18, relation_id: 1)
+    Relationship.create(user_id: 1, subject_id: 20, object_id: 27, relation_id: 1)
 
 
 ClassicalMuslim.create(user_id: 1, ism: "‘Abdallah", laqab: "Al-Saffah", nisbah: nil, nasab: "ibn Muhammad b. ‘Ali",  kunya: "Abu 'Abbas")
@@ -380,7 +381,7 @@ ClassicalMuslim.create(user_id: 1, ism: "Salih", laqab: nil, nisbah: nil, nasab:
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 26, ethnicity_id: 28) # BANU HASHIM
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 26, ethnicity_id: 31) # BANU ABBAS
    
-ClassicalMuslim.create(user_id: 1, ism: "Musa", laqab: nil, nisbah: nil, nasab: "ibn ‘Ali ibn Muhammad",  kunya: nil)
+ClassicalMuslim.create(user_id: 1, ism: "Musa", laqab: nil, nisbah: nil, nasab: "ibn Muhammad ibn ‘Ali",  kunya: nil)
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 27, ethnicity_id: 1) # Arab
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 27, ethnicity_id: 20) # BANU MUDAR 
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 27, ethnicity_id: 27) # BANU QURAYSH 

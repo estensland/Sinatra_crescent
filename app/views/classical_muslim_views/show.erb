@@ -86,7 +86,7 @@
   <% end %>
 
   <% if @person.nephews %>
-    <% @person.nephews.each do |rel| %>
+    <% @person.nephews.flatten.each do |rel| %>
       <p class="indent">Uncle of: <a href="../../classical_muslim/show/<%= rel.object.id %>"><%= rel.object.ism %></a></p>
     <% end %>
   <% end %>
