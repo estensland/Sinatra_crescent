@@ -38,6 +38,13 @@ Scope.create(user_id: 1, area: "Part of The Mudari Khurusani Army")
 Scope.create(user_id: 1, area: "al-Harith's Army") #20
 Scope.create(user_id: 1, area: "The Abbasid Army")
 Scope.create(user_id: 1, area: "The Rebel Khurusani Army") #22
+Scope.create(user_id: 1, area: "Summer Byzantine Campaign") #23
+
+Scope.create(user_id: 1, area: "Armenia")
+Scope.create(user_id: 1, area: "Jazira")
+Scope.create(user_id: 1, area: "Azerbaijan")
+
+
 
 
 
@@ -88,13 +95,17 @@ Ethnicity.create(user_id: 1, name: "Banu Taghlib")
 Faction.create(user_id: 1, name: "Syrian Yamani") #1
 Faction.create(user_id: 1, name: "Syrian Mudari") #2
 
-Faction.create(user_id: 1, name: "Khariji")
-Faction.create(user_id: 1, name: "Murji'a")
-Faction.create(user_id: 1, name: "Abbasid")
-Faction.create(user_id: 1, name: "Iraqi Hashimiyya")
-Faction.create(user_id: 1, name: "Khurasani Hashimiyya")
-Faction.create(user_id: 1, name: "Mainstream Shi'a")
-Faction.create(user_id: 1, name: "Ghu'lat Shi'a")
+Faction.create(user_id: 1, name: "Khariji") # 3
+Faction.create(user_id: 1, name: "Murji'a") # 4
+Faction.create(user_id: 1, name: "Abbasid") # 5
+Faction.create(user_id: 1, name: "Iraqi Hashimiyya") # 6
+Faction.create(user_id: 1, name: "Khurasani Hashimiyya") #7
+Faction.create(user_id: 1, name: "Mainstream Shi'a") # 8
+Faction.create(user_id: 1, name: "Ghu'lat Shi'a") # 9
+Faction.create(user_id: 1, name: "‘Abdallah b. Mu’awiya's Imamate/Rebellion") # 10
+Faction.create(user_id: 1, name: "Al-Mansuri Abbasids") # 11
+Faction.create(user_id: 1, name: "‘Abdallah b. ‘Ali's Caliphate/Rebellion") # 12
+
 
 Description.create(user_id: 1, table: "factions", parent_id: 1, content: "The leading Syrian Yamanis in the Third Fitna were primarily tribes of the Quda’a, especially the Kalb tribe. They had found favor with first Mu’awiya and then Marwan when he claimed and then saved Umayyad power. Interestingly however, the Quda'a were not always considered Yamanis, only after the Second Fitna did they leave the Mudaris, coincidentally as their political allies became Yamanis, and rivals the Mudaris. As the Syro-Jaziran groups began to dominate all military positions across the Empire, these Syrian Quda’a clashed with the Mudari Jazrians for positions. It is important to note that they did not always get along with the settled Yamanis of Syria, especialyl Homs, who had been cut from the Syro-Jaziran army. When al-Walid II took power, the Yamanis desired the richest governor positions, Iraq and Khurasan, currently owned by Mudaris. Citing the murder of Khalid b. ‘Abdallah al-Qasri as a motivation, they began the Third Fitna with a coup. They harnessed Yazid III's religious appeal to replace al-Walid with him. While this reaped some rewards, such as Kalbi Mansur b. Jumhur gaining the governorship of Iraq, they were short-lived. Yazid died suddenly, and his brother Ibrahim failed to keep power. Marwan II with his Jaziran Mudaris took power, and cut the Yamanis out. Their most dedicated leaders with allied-Umayyads fought against Marwan in Syria twice, but were defeated. They fled to Iraq, where they became Kharijis as yet another desperate attempt to gain an ally against the Mudaris. Marwan defeated them in Iraq, and some joined the Hashimite ‘Abdallah b. Mu’awiya, before fleeing yet again. Some allied with the Abbasids, including die-hard Kalbi Mansur b. Jumhur. Eventually, this Kalbi was killed off by Abu Muslim in the east, but Yamani identity remains in Syria to this day, strong enough to divide leading Yamani-Palestinians with Mudari-Palestinians in the 1940's")
 Description.create(user_id: 1, table: "ethnicities", parent_id: 1, content: "Arabs were the original ethnicity of Islam...by now more groups had converted however...")
@@ -230,9 +241,14 @@ ClassicalMuslim.create(user_id: 1, ism: "Sulayman", laqab: nil, nisbah: nil, nas
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 13, ethnicity_id: 30) # BANU UMAYYA
     Adherent.create(user_id: 1, classical_muslim_id: 13, faction_id: 1, start_date: "The struggle between his father and al-Walid", end_date: "The Fall of Damascus to Marwan") 
     Adherent.create(user_id: 1, classical_muslim_id: 13, faction_id: 2, start_date: "Marwan squashing the Yamani Syrian Rebellion", end_date: "As Soon as Marwan Left For Iraq") 
-    Adherent.create(user_id: 1, classical_muslim_id: 13, faction_id: 1, start_date: "As Soon as Marwan Left For Iraq" ) 
+    Adherent.create(user_id: 1, classical_muslim_id: 13, faction_id: 1, start_date: "As Soon as Marwan Left For Iraq", end_date: "Mostly Until Death") 
+    Adherent.create(user_id: 1, classical_muslim_id: 13, faction_id: 3, start_date: "Before Marwan arrived in Iraq", end_date: "The Defeat by Marwan at Mosul" ) 
+    Adherent.create(user_id: 1, classical_muslim_id: 13, faction_id: 12, start_date: "After the Khariji Defeat", end_date: "Ibn Dubarah's Victory Over Ibn Mu’awiya") 
+    LifeEvent.create(user_id: 1, classical_muslim_id: 13, event_id: 1, date: "fl. 732")
+    LifeEvent.create(user_id: 1, classical_muslim_id: 13, event_id: 2, date: "747")
     Position.create(user_id: 1, title_id: 1, classical_muslim_id: 13, scope_id: 3, start_date: "745", end_date: "750") #UMAYYAD CALIPH
-
+    Position.create(user_id: 1, title_id: 1, classical_muslim_id: 5, scope_id: 23, start_date: "732", end_date: "732") # Summer Campaign
+    Position.create(user_id: 1, title_id: 1, classical_muslim_id: 5, scope_id: 23, start_date: "735", end_date: "738") # Summer Campaign
 
 
 ClassicalMuslim.create(user_id: 1, ism: "Yazid", laqab: nil, nisbah: nil, nasab: "ibn al-Walid",  kunya: nil)
@@ -263,6 +279,8 @@ ClassicalMuslim.create(user_id: 1, ism: "al-Walid", laqab: nil, nisbah: nil, nas
     Position.create(user_id: 1, title_id: 1, classical_muslim_id: 16, scope_id: 1, start_date: "745", end_date: "750") #UMAYYAD CALIPH
     Adherent.create(user_id: 1, classical_muslim_id: 16, faction_id: 1) 
 
+
+# ABBASIDS
 # 17
 ClassicalMuslim.create(user_id: 1, ism: "‘Abdallah", laqab: nil, nisbah: nil, nasab: "ibn ‘Ali ibn Muhammad",  kunya: nil)
   Description.create(table: "classical_muslims", user_id: 1, parent_id: 17, content: "He joined ‘Abdallah b. Mu’awiya with his nephew al-Mansur and his brother ‘Isa. He would go on to lead the Abbasid host at the Battle of the Zab and contested al-Mansur’s succession when al-Saffah died. He was defeated by Abu Muslim, who al-Mansur then killed.")
@@ -274,39 +292,81 @@ ClassicalMuslim.create(user_id: 1, ism: "‘Abdallah", laqab: nil, nisbah: nil, 
     Position.create(user_id: 1, title_id: 5, classical_muslim_id: 17, scope_id: 21, start_date: "750", end_date: "751") # GENERAL OF ABBASID ARMY
     Position.create(user_id: 1, title_id: 2, classical_muslim_id: 17, scope_id: 5, start_date: "751", end_date: "754") # GOV OF SYRIA
     Position.create(user_id: 1, title_id: 1, classical_muslim_id: 17, scope_id: 3, start_date: "754", end_date: "754") # DISPUTED CALIPH
+    Adherent.create(user_id: 1, classical_muslim_id: 17, faction_id: 1) 
+
 
 ClassicalMuslim.create(user_id: 1, ism: "‘Abdallah", laqab: "Al-Mansur", nisbah: nil, nasab: "ibn Muhammad ibn ‘Abdallah",  kunya: "Abu Ja'far")
   Description.create(table: "classical_muslims", user_id: 1, parent_id: 18, content: "The second Abbasid caliph ruled from 754-775 and founded Baghdad. Despite being older than al-Saffah, he was passed over originally, possibly because his mother was a slave. He was involved with the surrender/murder of Ibn Hubayrah at Wasit during his brother’s reign, and politically clashed with Abu Muslim. Once in power and after his uncle was out of the way, he had Abu Muslim killed.")
-    
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 18, ethnicity_id: 1) # Arab
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 18, ethnicity_id: 20) # BANU MUDAR 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 18, ethnicity_id: 27) # BANU QURAYSH 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 18, ethnicity_id: 28) # BANU HASHIM
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 18, ethnicity_id: 31) # BANU ABBAS
     Position.create(user_id: 1, title_id: 1, classical_muslim_id: 18, scope_id: 11, start_date: "746ish", end_date: "") # 
     Position.create(user_id: 1, title_id: 1, classical_muslim_id: 18, scope_id: 2, start_date: "754", end_date: "775") # ABBASID CALIPH
 
 ClassicalMuslim.create(user_id: 1, ism: "‘Ali", laqab: nil, nisbah: nil, nasab: "ibn ‘Abdallah ibn al-Abbas",  kunya: "")
-
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 19, ethnicity_id: 1) # Arab
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 19, ethnicity_id: 20) # BANU MUDAR 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 19, ethnicity_id: 27) # BANU QURAYSH 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 19, ethnicity_id: 28) # BANU HASHIM
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 19, ethnicity_id: 31) # BANU ABBAS
 ClassicalMuslim.create(user_id: 1, ism: "Muhammad", laqab: nil, nisbah: nil, nasab: "ibn ‘Ali ibn ‘Abdallah",  kunya: "")
-
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 20, ethnicity_id: 1) # Arab
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 20, ethnicity_id: 20) # BANU MUDAR 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 20, ethnicity_id: 27) # BANU QURAYSH 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 20, ethnicity_id: 28) # BANU HASHIM
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 20, ethnicity_id: 31) # BANU ABBAS
 
 ClassicalMuslim.create(user_id: 1, ism: "‘Abdallah", laqab: "Al-Saffah", nisbah: nil, nasab: "ibn Muhammad b. ‘Ali",  kunya: "Abu 'Abbas")
   Description.create(table: "classical_muslims", user_id: 1, parent_id: 21, content: "The first Abbasid Caliph reigned during 750-754 . His authority was limited severely by Abu Muslim’s power, and witnessed the Khurasani move against the Hashimiyya by killing off Ibn Kathir and Abu Salama. Only with al-Saffah’s death did the Abbasids overcome Abu Muslim’s power.")
-    
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 21, ethnicity_id: 1) # Arab
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 21, ethnicity_id: 20) # BANU MUDAR 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 21, ethnicity_id: 27) # BANU QURAYSH 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 21, ethnicity_id: 28) # BANU HASHIM
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 21, ethnicity_id: 31) # BANU ABBAS
     Position.create(user_id: 1, title_id: 1, classical_muslim_id: 21, scope_id: 2, start_date: "750", end_date: "754") # ABBASID CALIPH
   
 ClassicalMuslim.create(user_id: 1, ism: "Dawud", laqab: nil, nisbah: nil, nasab: "ibn ‘Ali ibn ‘Abdallah",  kunya: nil)
   Description.create(table: "classical_muslims", user_id: 1, parent_id: 22, content: "Uncle of the Caliph brothers, he executed captured Umayyads in the Hejaz.")
   Position.create(user_id: 1, title_id: 4, classical_muslim_id: 18, scope_id: 22, start_date: "746ish", end_date: "???") # 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 22, ethnicity_id: 1) # Arab
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 22, ethnicity_id: 20) # BANU MUDAR 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 22, ethnicity_id: 27) # BANU QURAYSH 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 22, ethnicity_id: 28) # BANU HASHIM
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 22, ethnicity_id: 31) # BANU ABBAS
 
 ClassicalMuslim.create(user_id: 1, ism: "Ibrahim", laqab: "Al-Imam", nisbah: nil, nasab: "ibn Muhammad b. ‘Ali",  kunya: "Abu 'Abbas")
   Description.create(table: "classical_muslims", user_id: 1, parent_id: 23, content: "The Abbasid who it is claimed the revolution was done in favor for. Questions arise in the scholarship of the exact details, but suffice to say he was captured and killed by Marwan’s forces before the Khurasanis took Kufa.")
- 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 23, ethnicity_id: 1) # Arab
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 23, ethnicity_id: 20) # BANU MUDAR 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 23, ethnicity_id: 27) # BANU QURAYSH 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 23, ethnicity_id: 28) # BANU HASHIM
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 23, ethnicity_id: 31) # BANU ABBAS
+
 ClassicalMuslim.create(user_id: 1, ism: "‘Isa", laqab: nil, nisbah: nil, nasab: "ibn ‘Ali ibn ‘Abdallah",  kunya: nil)
-  Description.create(table: "classical_muslims", user_id: 1, parent_id: 22, content: "Joined ‘Abdallah b. Mu’awiya’s revolt with his nephew al-Mansur and his brother ‘Abdallah.")
+  Description.create(table: "classical_muslims", user_id: 1, parent_id: 24, content: "Joined ‘Abdallah b. Mu’awiya’s revolt with his nephew al-Mansur and his brother ‘Abdallah.")
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 24, ethnicity_id: 1) # Arab
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 24, ethnicity_id: 20) # BANU MUDAR 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 24, ethnicity_id: 27) # BANU QURAYSH 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 24, ethnicity_id: 28) # BANU HASHIM
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 24, ethnicity_id: 31) # BANU ABBAS
 
 ClassicalMuslim.create(user_id: 1, ism: "‘Isa", laqab: nil, nisbah: nil, nasab: "ibn Musa ibn ‘Ali",  kunya: nil)
-  Description.create(table: "classical_muslims", user_id: 1, parent_id: 22, content: "Nephew of al-Mansur and al-Saffah who featured prominently in the early Abbasid political scene. When al-Saffah died, he accepted the oath of allegiance for al-Mansur as his uncle was away in Mecca. He was second in line for the Caliphate, but al-Mansur later pushed him out in favor of al-Mahdi b. al-Mansur.")
+  Description.create(table: "classical_muslims", user_id: 1, parent_id: 25, content: "Nephew of al-Mansur and al-Saffah who featured prominently in the early Abbasid political scene. When al-Saffah died, he accepted the oath of allegiance for al-Mansur as his uncle was away in Mecca. He was second in line for the Caliphate, but al-Mansur later pushed him out in favor of al-Mahdi b. al-Mansur.")
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 25, ethnicity_id: 1) # Arab
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 25, ethnicity_id: 20) # BANU MUDAR 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 25, ethnicity_id: 27) # BANU QURAYSH 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 25, ethnicity_id: 28) # BANU HASHIM
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 25, ethnicity_id: 31) # BANU ABBAS
 
 ClassicalMuslim.create(user_id: 1, ism: "Salih", laqab: nil, nisbah: nil, nasab: "ibn ‘Ali ibn ‘Abdallah",  kunya: nil)
-  Description.create(table: "classical_muslims", user_id: 1, parent_id: 22, content: "Nephew of al-Mansur and al-Saffah who featured prominently in the early Abbasid political scene. When al-Saffah died, he accepted the oath of allegiance for al-Mansur as his uncle was away in Mecca. He was second in line for the Caliphate, but al-Mansur later pushed him out in favor of al-Mahdi b. al-Mansur.")
+  Description.create(table: "classical_muslims", user_id: 1, parent_id: 26, content: "Led the pursuit of Marwan II into upper Egypt, where with army, including Abu ‘Awn, caught up with and killed Marwan.")
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 26, ethnicity_id: 1) # Arab
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 26, ethnicity_id: 20) # BANU MUDAR 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 26, ethnicity_id: 27) # BANU QURAYSH 
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 26, ethnicity_id: 28) # BANU HASHIM
+    EthnicIdentity.create(user_id: 1, classical_muslim_id: 26, ethnicity_id: 31) # BANU ABBAS
    
-   
-  Led the pursuit of Marwan II into upper Egypt, where with army, including Abu ‘Awn, caught up with and killed Marwan.
+  
 

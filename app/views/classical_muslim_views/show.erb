@@ -44,9 +44,11 @@
 <div class="factional">
 
   <p><span>Factions:</span></p>
-  <% if @person.factions %>
-    <% @person.factions.each do |faction| %>
-      <p><%= faction.name %></p>
+  <% if @person.adherents.first %>
+    <% @person.adherents.each do |adhere| %>
+      <p><span> &nbsp <%= adhere.faction.name %>:</span></p> 
+      <p class="indent">From: <%= adhere.start_date %> </p>
+      <p class="indent"> Until: <%= adhere.start_date %></p>
     <% end %>  
   <% end %>
 
@@ -57,7 +59,9 @@
   <p><span>Relationships:</span></p>
   <% if @person.subject_relationships %>
     <% @person.subject_relationships.each do |rel| %>
-      <p><%= rel.relation.name %> of: <a href="../../classical_muslim/show/<%= rel.object.id %>"><%= rel.object.ism %></a></p>
+      <p class="indent"> blah</p>
+
+      <p class="indent"><%= rel.relation.name %> of: <a href="../../classical_muslim/show/<%= rel.object.id %>"><%= rel.object.ism %></a></p>
     <% end %>  
   <% end %>
     
