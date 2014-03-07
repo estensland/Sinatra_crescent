@@ -26,4 +26,20 @@ class ClassicalMuslim < ActiveRecord::Base
     end
   end
 
+  def uncles
+    return false unless self.object_relationships.first
+    self.object_relationships.first.subject.siblings.map do |uncle|
+      uncle
+    end
+  end
+
+  def nephews
+    return false unless self.object_relationships.first
+    self.siblings.map do |sib|
+      sib.subject_relationships.map do |son|
+        son
+      end
+    end
+  end
+
 end

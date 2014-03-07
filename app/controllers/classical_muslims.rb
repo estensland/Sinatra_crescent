@@ -1,5 +1,5 @@
-get '/classical_muslim/new/:id' do
-  erb :"classical_muslim_views/new"
+get '/classical_muslim/all' do
+  erb :"classical_muslim_views/all"
 end
 
 get '/classical_muslim/show/:id' do

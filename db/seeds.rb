@@ -118,7 +118,7 @@ Event.create(user_id: 1, name: "Death")
 
 
 
-ClassicalMuslim.create(user_id: 1, ism: "al_Abbas", laqab: nil, nisbah: nil, nasab: "ibn al-Walid ibn 'Abd al-Malik",  kunya: nil)
+ClassicalMuslim.create(user_id: 1, ism: "al-Abbas", laqab: nil, nisbah: nil, nasab: "ibn al-Walid ibn 'Abd al-Malik",  kunya: nil)
   Description.create(table: "classical_muslims", user_id: 1, parent_id: 1, content: "He was the head of Banu Marwan when his brother of Yazid III led his coup against al-Walid II. While al-Abbas at first tries to convince Yazid’s against rebellion, he joined Yazid’s supporters before al-Walid II was killed.")
   EthnicIdentity.create(user_id: 1, classical_muslim_id: 1, ethnicity_id: 1) # ARAB
   EthnicIdentity.create(user_id: 1, classical_muslim_id: 1, ethnicity_id: 20) # BANU MUDAR
@@ -305,7 +305,7 @@ ClassicalMuslim.create(user_id: 1, ism: "‘Abdallah", laqab: "Al-Mansur", nisba
     Position.create(user_id: 1, title_id: 1, classical_muslim_id: 18, scope_id: 11, start_date: "746ish", end_date: "") # 
     Position.create(user_id: 1, title_id: 1, classical_muslim_id: 18, scope_id: 2, start_date: "754", end_date: "775") # ABBASID CALIPH
 
-ClassicalMuslim.create(user_id: 1, ism: "‘Ali", laqab: nil, nisbah: nil, nasab: "ibn ‘Abdallah ibn al-Abbas",  kunya: "")
+ClassicalMuslim.create(user_id: 1, ism: "‘Ali", laqab: nil, nisbah: nil, nasab: "ibn ‘Abdallah ibn Abbas",  kunya: "")
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 19, ethnicity_id: 1) # Arab
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 19, ethnicity_id: 20) # BANU MUDAR 
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 19, ethnicity_id: 27) # BANU QURAYSH 

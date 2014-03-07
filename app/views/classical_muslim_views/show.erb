@@ -1,6 +1,9 @@
 <h1 class="page_head">Person Viewer</h1>
 
 <div class="naming">
+  <p><span>Person:</span></p>
+  <p class="indent"><%= @person.kunya if @person.kunya %> <%= @person.ism if @person.ism %> <%= @person.nasab if @person.nasab %> <%= @person.nisbah if @person.nisbah %> <%= @person.laqab if @person.laqab %></p>
+  <br>
   <p><span>Name Details:</span></p>
   <% if @person.ism %>
   <p class="field_bar"><span class="field_name">Ism:</span> <%= @person.ism%></p>
@@ -25,7 +28,7 @@
   <p><span>Genealogical/Ethnic Details:</span></p>
   <% if @person.ethnicities %>
     <% @person.ethnicities.each do |ethnicity| %>
-      <p class="indent"><%= ethnicity.name %></p>
+      <p class="indent"><a href="/ethnicity/show/<%= ethnicity.id %>"><%= ethnicity.name %></a></p>
     <% end %>  
   <% end %>
 
@@ -69,10 +72,22 @@
       <p class="indent">Son of: <a href="../../classical_muslim/show/<%= rel.subject.id %>"><%= rel.subject.ism %></a></p>
     <% end %>
   <% end %>
+  
+  <% if @person.uncles %>
+    <% @person.uncles.each do |rel| %>
+      <p class="indent">Nephew of: <a href="../../classical_muslim/show/<%= rel.object.id %>"><%= rel.object.ism %></a></p>
+    <% end %>
+  <% end %>
 
   <% if @person.siblings %>
     <% @person.siblings.each do |rel| %>
       <p class="indent">Brother of: <a href="../../classical_muslim/show/<%= rel.object.id %>"><%= rel.object.ism %></a></p>
+    <% end %>
+  <% end %>
+
+  <% if @person.nephews %>
+    <% @person.nephews.each do |rel| %>
+      <p class="indent">Uncle of: <a href="../../classical_muslim/show/<%= rel.object.id %>"><%= rel.object.ism %></a></p>
     <% end %>
   <% end %>
   
@@ -92,7 +107,7 @@
 <div class="descriptions">
 
   <p><span>Description:</span></p>
-  <% if @person.descriptions %>
+  <% if @person.descriptions.first %>
     <p><%= @person.descriptions.first.content %> </p>
   <% end %>
 
