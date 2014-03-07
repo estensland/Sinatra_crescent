@@ -35,8 +35,8 @@ class ClassicalMuslim < ActiveRecord::Base
 
   def nephews
     return false unless self.object_relationships.first
-    self.siblings.map do |sib|
-      sib.subject_relationships.map do |son|
+    self.uncles.map do |sib|
+      sib.subject.subject_relationships.map do |son|
         son
       end
     end
