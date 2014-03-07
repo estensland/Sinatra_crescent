@@ -1,11 +1,9 @@
-
 get '/classical_muslim/new/:id' do
-  
   erb :"classical_muslim_views/new"
 end
 
 get '/classical_muslim/show/:id' do
-  
+  @person = ClassicalMuslim.find(params[:id])  
   erb :"classical_muslim_views/show"
 end
 

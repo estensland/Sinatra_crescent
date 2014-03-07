@@ -1,0 +1,67 @@
+<h1 class="page_head">Person Viewer</h1>
+
+<div class="naming">
+  <p><span>Name Details:</span></p>
+  <% if @person.ism %>
+  <p class="field_bar"><span class="field_name">Ism:</span> <%= @person.ism%></p>
+  <% end %>
+  <% if @person.kunya %>
+  <p class="field_bar"><span class="field_name">Kunya:</span> <%= @person.kunya %></p>
+  <% end %>
+  <% if @person.nasab %>
+  <p class="field_bar"><span class="field_name">Nasab:</span> <%= @person.nasab %></p>
+  <% end %>
+  <% if @person.nisbah%>
+  <p class="field_bar"><span class="field_name">Nisbah:</span> <%= @person.nisbah %></p>
+  <% end %>
+  <% if @person.laqab %>
+  <p class="field_bar"><span class="field_name">Laqab:</span> <%= @person.laqab %></p>
+  <% end %>
+</div>
+
+<div class="genealogical">
+
+  <p><span>Genealogical/Ethnic Details:</span></p>
+  <% if @person.ethnicities %>
+    <% @person.ethnicities.each do |ethnicity| %>
+      <p><%= ethnicity.name %></p>
+    <% end %>  
+  <% end %>
+
+</div>
+
+<div class="events">
+
+  <p><span>Life Events:</span></p>
+  <% if @person.events %>
+    <% @person.events.each do |event| %>
+      <p><%= event.name %></p>
+    <% end %>  
+  <% end %>
+
+</div>
+
+<div class="factional">
+
+  <p><span>Factions:</span></p>
+  <% if @person.factions %>
+    <% @person.factions.each do |faction| %>
+      <p><%= faction.name %></p>
+    <% end %>  
+  <% end %>
+
+</div>
+
+<div class="relational">
+
+  <p><span>Titles:</span></p>
+  <% if @person.positions %>
+    <% @person.positions.each do |position| %>
+      <p><%= position.title.position %> of <%= position.scope.area %>: From <%= position.start_date %> til <%= position.end_date %></p>
+    <% end %>  
+  <% end %>
+
+</div>
+
+
+<br>

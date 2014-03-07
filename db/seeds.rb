@@ -201,6 +201,8 @@ ClassicalMuslim.create(user_id: 1, ism: "Sulayman", laqab: nil, nisbah: nil, nas
     Adherent.create(user_id: 1, classical_muslim_id: 13, faction_id: 1, start_date: "The struggle between his father and al-Walid", end_date: "The Fall of Damascus to Marwan") 
     Adherent.create(user_id: 1, classical_muslim_id: 13, faction_id: 2, start_date: "Marwan squashing the Yamani Syrian Rebellion", end_date: "As Soon as Marwan Left For Iraq") 
     Adherent.create(user_id: 1, classical_muslim_id: 13, faction_id: 1, start_date: "As Soon as Marwan Left For Iraq" ) 
+    Position.create(user_id: 1, title_id: 1, classical_muslim_id: 13, scope_id: 3, start_date: "745", end_date: "750") #UMAYYAD CALIPH
+
 
 
 ClassicalMuslim.create(user_id: 1, ism: "Yazid", laqab: nil, nisbah: nil, nasab: "ibn al-Walid",  kunya: nil)
@@ -230,4 +232,5 @@ ClassicalMuslim.create(user_id: 1, ism: "al-Walid", laqab: nil, nisbah: nil, nas
     EthnicIdentity.create(user_id: 1, classical_muslim_id: 16, ethnicity_id: 30) # BANU UMAYYA
     Position.create(user_id: 1, title_id: 1, classical_muslim_id: 15, scope_id: 1, start_date: "745", end_date: "750") #UMAYYAD CALIPH
     Adherent.create(user_id: 1, classical_muslim_id: 16, faction_id: 1) 
+
 
